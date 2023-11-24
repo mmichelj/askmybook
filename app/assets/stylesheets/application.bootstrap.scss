@@ -1,6 +1,12 @@
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
 
+img {
+  display: block;
+  max-width: 200px;
+  height: auto;
+}
+
 .bg_primary-color {
   background-color: #FFFFFF;
 }
