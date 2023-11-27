@@ -7,7 +7,7 @@ const Home = () => {
             <div className="vw-100 vh-100 primary-color d-flex align-items-center justify-content-center">
                 <div className="jumbotron jumbotron-fluid bg-transparent">
                     <div className="container secondary-color">
-                        <img src={Image} class="rounded mx-auto mb-4" alt="..." />
+                        <img src={Image} class="rounded mx-auto mb-4" alt="Book cover" />
                         <h1 className="display-4">Ask Sherlock Holmes</h1>
                         <p className="lead">
                         Ask anything about <em>The Adventures of Sherlock Holmes</em> by Arthur Conan Doyle
