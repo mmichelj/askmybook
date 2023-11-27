@@ -4,6 +4,7 @@ default: &default
   username: 'book'
   password: <%= ENV['ASKMYBOOK_DATABASE_PASSWORD'] %>
   host: localhost
+  port: 5436
 
 development:
   <<: *default
