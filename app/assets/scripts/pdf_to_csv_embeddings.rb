@@ -30,15 +30,23 @@ def get_openai_embeddings(text, key)
 end
 
 def read_pdf(path)
-    # Read pdf pages, for each page, generate OpenAI embedding and save in csv file
-    reader = PDF::Reader.new(path)
-    pdf_text = ''
-    previous_page_context = ''
+    begin
+        # Read pdf pages, for each page, generate OpenAI embedding and save in csv file
+        reader = PDF::Reader.new(path)
+        pdf_text = ''
+        total_pages = reader.page_count
 
-    reader.pages.each do |page|
-        # Extract pdf text and remove page numbers
-        pdf_text = pdf_text + page.text.gsub(/\n|\s+(\d+)/,' ')
+        puts "Reading pages in pdf: #{path} total pages: #{total_pages}"
+        reader.pages.each do |page|
+            # Extract pdf text and remove page numbers
+            pdf_text = pdf_text + page.text.gsub(/\n|\s+(\d+)/,' ')
+        end
+
+    rescue ArgumentError => e
+        puts "The file #{path} does not exist :: Error: #{e}"
+        exit(1) 
     end
+    
     return pdf_text
 end
 
@@ -91,15 +99,23 @@ batches = split_text(pdf_text)
 
 # Open or create csv file
 CSV.open(options[:csv_path], 'w') do |csv|
+    puts "Getting embeddings and writing in csv file: #{options[:csv_path]}"
+
     # Write headers
     csv << ['text', 'embeddings']
-
     # Process batches
     batches.each do |batch|
         # Call open AI api to get embeddings
         response = get_openai_embeddings(batch[:text], options[:key])
-    
-        # Save in csv file
-        csv << [batch[:text], response["data"][0]["embedding"].join(',')]
+
+        unless response["data"][0].nil?
+            # Save in csv file
+            csv << [batch[:text], response["data"][0]["embedding"].join(',')]
+        else
+            puts "There was an error while processing the embeddings"
+            exit(1)
+        end
     end
 end
+
+puts "The PDF was processed successfully! Output file: #{options[:csv_path]}"
