@@ -2,7 +2,7 @@ default: &default
   adapter: postgresql
   encoding: unicode
   username: 'book'
-  password: <%= ENV['APPNAME_DATABASE_PASSWORD'] %>
+  password: <%= ENV['ASKMYBOOK_DATABASE_PASSWORD'] %>
   host: localhost
 
 development:
