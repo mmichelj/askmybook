@@ -102,7 +102,7 @@ CSV.open(options[:csv_path], 'w') do |csv|
     puts "Getting embeddings and writing in csv file: #{options[:csv_path]}"
 
     # Write headers
-    csv << ['text', 'embeddings']
+    csv << ['text', 'embeddings', 'total_tokens']
     # Process batches
     batches.each do |batch|
         # Call open AI api to get embeddings
@@ -110,7 +110,7 @@ CSV.open(options[:csv_path], 'w') do |csv|
 
         unless response["data"][0].nil?
             # Save in csv file
-            csv << [batch[:text], response["data"][0]["embedding"].join(',')]
+            csv << [batch[:text], "[#{response["data"][0]["embedding"].join(',')}]", response["usage"]["total_tokens"]]
         else
             puts "There was an error while processing the embeddings"
             exit(1)
