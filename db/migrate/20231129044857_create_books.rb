@@ -5,6 +5,7 @@ class CreateBooks < ActiveRecord::Migration[7.0]
 
       t.string :context, null: false
       t.vector :embedding, dimensions: 1536, using: :ivfflat, opclass: :vector_ip_ops
+      t.integer :token_count, null: false
     end
   end
 end
