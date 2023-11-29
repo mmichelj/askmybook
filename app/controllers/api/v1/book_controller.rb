@@ -3,8 +3,7 @@ class Api::V1::BookController < ApplicationController
 
   def ask
     response = {}
-    response['question'] = params[:question]
-    response['answer'] = 'This is the answer'
+    question_embeddings = OpenaiService.calculate_embeddings(params[:question])
     render json: response.to_h
   end
 
