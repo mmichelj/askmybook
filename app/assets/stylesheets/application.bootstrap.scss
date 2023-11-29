@@ -1,5 +1,4 @@
 @import 'bootstrap/scss/bootstrap';
-@import 'bootstrap-icons/font/bootstrap-icons';
 
 img {
   display: block;
@@ -10,27 +9,20 @@ img {
 .bg_primary-color {
   background-color: #FFFFFF;
 }
+.bg-info {
+  background-color: #005eff;
+}
 .primary-color {
   background-color: #FFFFFF;
 }
-.bg_secondary-color {
-  background-color: #293241;
-}
 .secondary-color {
   color: #293241;
-}
-.hero {
-  width: 100vw;
-  height: 50vh;
-}
-.hero img {
-  object-fit: cover;
-  object-position: top;
-  height: 100%;
-  width: 100%;
 }
 .overlay {
   height: 100%;
   width: 100%;
   opacity: 0.4;
+}
+.jumbotron{
+  background-color: #E0E0E0; 
 }
