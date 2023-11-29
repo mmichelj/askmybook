@@ -1,25 +1,35 @@
-import React, { useState, useContext, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import { getQuestionAnswer, getLuckyAnswer } from "../services/services";
 
 const QuestionAnswer = (props) => {
     const [answer, setAnswer] = useState("")
+    const [question, setQuestion] = useState("");
 
-    function hanldeAsk() {
-        console.log('You clicked ask.');
+    const handleQuestionOnChange = (event) => {
+        setQuestion(event.target.value)
     }
 
-    function handleLucky() {
-        console.log('Lucky')
+    const handleAsk = async() => {
+        const response = await getQuestionAnswer(question)
+        console.log(response.data.answer)
+        setAnswer(response.data.answer)
+    }
+
+    const handleLucky = async() => {
+        const response = await getLuckyAnswer()
+        console.log(response.data.answer)
+        setAnswer(response.data.answer)
+        setQuestion(response.data.question)
     }
     
     return (
         <React.Fragment>
-            <input type="text" className="form-control" maxLength="150" placeholder="Write your question here..." aria-label="query" aria-describedby="basic-addon1"/>
+            <input value={question} type="text" className="form-control" maxLength="150" placeholder="Write your question here..." aria-label="question" aria-describedby="basic-addon1" onChange={(event) => { handleQuestionOnChange(event) }}/>
             {answer && <div className="jumbotron jumbotron-fluid mt-4 p-4 rounded max-width: 50%">
                 <p className="text-dark">{answer}</p>
             </div>}
             <div className="d-grid gap-3 d-md-flex mt-4">
-                <button className="btn btn-lg btn-primary me-md-2" type="button" onClick={hanldeAsk}>Ask Question</button>
+                <button className="btn btn-lg btn-primary me-md-2" type="button" onClick={handleAsk}>Ask Question</button>
                 <button className="btn btn-secondary btn-lg" type="button" onClick={handleLucky}>I'm feeling lucky!</button>
             </div>
         </React.Fragment>

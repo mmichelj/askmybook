@@ -1,5 +1,5 @@
 import React from "react";
-import Image from '../../../public/cover.jpg'
+import Image from "../../../public/cover.jpg";
 
 const Greeting = () => {
     
