@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { getQuestionAnswer, getLuckyAnswer } from "../services/services";
+import { getQuestionAnswer, getLuckyAnswer } from "../services/BookDataService";
 
 const QuestionAnswer = (props) => {
     const [answer, setAnswer] = useState("")
@@ -10,14 +10,13 @@ const QuestionAnswer = (props) => {
     }
 
     const handleAsk = async() => {
+        if(!question) return
         const response = await getQuestionAnswer(question)
-        console.log(response.data.answer)
         setAnswer(response.data.answer)
     }
 
     const handleLucky = async() => {
         const response = await getLuckyAnswer()
-        console.log(response.data.answer)
         setAnswer(response.data.answer)
         setQuestion(response.data.question)
     }
