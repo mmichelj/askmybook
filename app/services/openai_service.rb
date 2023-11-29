@@ -12,10 +12,10 @@ class OpenAIService
         response['data'][0]['embedding']
     end
 
-    def self.ask_gpt(context, query)
+    def self.ask_gpt(context, question)
         messages = [
             { role: "system", content: OPENAI_INITIAL_PROMPT },
-            { role: "user", content: query }
+            { role: "user", content: question }
         ]
 
         response = Openai::Completion.create(
