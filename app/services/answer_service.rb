@@ -7,9 +7,13 @@ class AnswerService < ApplicationService
     end
 
     def call
-        # Call openai or db or redis
-        answer = call_db
+        # Call openai or cache or db
+        answer = call_cache
         
+        if answer[:distance] > 0.5 then
+            answer = call_db
+        end
+
         if answer[:distance] > 0.5 then
             answer = call_openai
         end
@@ -21,6 +25,7 @@ class AnswerService < ApplicationService
 
     def call_cache
 
+        { text: '', distance: 1}
     end
 
     def call_db
