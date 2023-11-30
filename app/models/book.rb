@@ -14,6 +14,6 @@ class Book < ApplicationRecord
     end
 
     def set_token_count
-        self.token_count = Tiktoken.encoding_for_model("gpt-4").encode(data).length
+        self.token_count = Tiktoken.encoding_for_model("gpt-4").encode(context).length
     end
 end
