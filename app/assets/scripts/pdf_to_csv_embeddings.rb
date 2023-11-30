@@ -52,8 +52,8 @@ end
 
 def split_text(text)
     splitter = Baran::RecursiveCharacterTextSplitter.new(
-        chunk_size: 1024,
-        chunk_overlap: 64,
+        chunk_size: 2000,
+        chunk_overlap: 200,
         separators: ["\"", "\n", " ", ""]
     )
 

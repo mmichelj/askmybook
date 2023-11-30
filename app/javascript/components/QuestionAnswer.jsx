@@ -23,7 +23,7 @@ const QuestionAnswer = (props) => {
     
     return (
         <React.Fragment>
-            <input value={question} type="text" className="form-control" maxLength="150" placeholder="Write your question here..." aria-label="question" aria-describedby="basic-addon1" onChange={(event) => { handleQuestionOnChange(event) }}/>
+            <input value={question} type="text" className="form-control" placeholder="Write your question here..." aria-label="question" aria-describedby="basic-addon1" onChange={(event) => { handleQuestionOnChange(event) }}/>
             {answer && <div className="jumbotron jumbotron-fluid mt-4 p-4 rounded max-width: 50%">
                 <p className="text-dark">{answer}</p>
             </div>}
