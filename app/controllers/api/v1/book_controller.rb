@@ -10,14 +10,9 @@ class Api::V1::BookController < ApplicationController
     render json: answer
   end
 
-  def lucky
-    question_answer = { question: '', answer: '' }
-    
-    result = QuestionAnswer.columns
-
-    puts result.inspect
-
-    render json: result.to_h
+  def lucky    
+    random_qa = QuestionAnswer.known.random
+    render json: { question: random_qa['question'], answer: random_qa['answer']}
   end
 
   private
