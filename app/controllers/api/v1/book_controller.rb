@@ -11,10 +11,13 @@ class Api::V1::BookController < ApplicationController
   end
 
   def lucky
-    response = {}
-    response['question'] = 'The question?'
-    response['answer'] = 'This is the lucky answer'
-    render json: response.to_h
+    question_answer = { question: '', answer: '' }
+    
+    result = QuestionAnswer.columns
+
+    puts result.inspect
+
+    render json: result.to_h
   end
 
   private
