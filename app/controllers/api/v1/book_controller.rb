@@ -10,11 +10,9 @@ class Api::V1::BookController < ApplicationController
     render json: answer
   end
 
-  def lucky
-    response = {}
-    response['question'] = 'The question?'
-    response['answer'] = 'This is the lucky answer'
-    render json: response.to_h
+  def lucky    
+    random_qa = QuestionAnswer.known.random
+    render json: { question: random_qa['question'], answer: random_qa['answer']}
   end
 
   private

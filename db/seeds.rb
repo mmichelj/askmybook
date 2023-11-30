@@ -11,4 +11,10 @@ def load_book_embeddings()
     ActiveRecord::Base.connection.execute(sql)
 end
 
+def load_question_answers_embeddings()
+    sql = "COPY question_answers(question, question_embedding, token_count, known, answer) FROM '#{Rails.root.join('public','known_question_answers.csv')}' with (format csv, header true)"
+    ActiveRecord::Base.connection.execute(sql)
+end
+
+load_question_answers_embeddings()
 load_book_embeddings()

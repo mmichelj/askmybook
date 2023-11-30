@@ -18,8 +18,8 @@ const QuestionAnswer = (props) => {
 
     const handleLucky = async() => {
         const response = await getLuckyAnswer()
-        setAnswer(response.answer)
-        setQuestion(responses.question)
+        setAnswer(response.data.answer)
+        setQuestion(response.data.question)
     }
     
     return (
