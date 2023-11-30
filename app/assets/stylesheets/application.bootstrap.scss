@@ -26,3 +26,12 @@ img {
 .jumbotron{
   background-color: #E0E0E0; 
 }
+.overflow-auto {
+  max-height: 70px;
+  max-width: 630px;
+}
+.text-black-wrap {
+  text-align:justify;
+  color: black;
+  word-wrap: break-word;
+}

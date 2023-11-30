@@ -25,8 +25,8 @@ const QuestionAnswer = (props) => {
     return (
         <React.Fragment>
             <input value={question} type="text" className="form-control" placeholder="Write your question here..." aria-label="question" aria-describedby="basic-addon1" onChange={(event) => { handleQuestionOnChange(event) }}/>
-            {answer && <div className="jumbotron jumbotron-fluid mt-4 p-4 rounded max-width: 50%">
-                <p className="text-dark">{answer}</p>
+            {answer && <div className="jumbotron mt-4 p-4 rounded">
+                <div className="overflow-auto pe-2"><p className="text-black-wrap">{answer}</p></div>
             </div>}
             <div className="d-grid gap-3 d-md-flex mt-4">
                 <button className="btn btn-lg btn-primary me-md-2" type="button" onClick={handleAsk}>Ask Question</button>
