@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_29_044857) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_30_042945) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "vector"
@@ -31,6 +31,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_29_044857) do
     t.string "answer", null: false
     t.vector "question_embedding"
     t.integer "token_count", null: false
+    t.string "question"
     t.index ["created_at"], name: "index_question_answers_on_created_at"
     t.index ["updated_at"], name: "index_question_answers_on_updated_at"
   end

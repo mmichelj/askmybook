@@ -11,14 +11,15 @@ const QuestionAnswer = (props) => {
 
     const handleAsk = async() => {
         if(!question) return
-        const response = await getQuestionAnswer(question)
-        setAnswer(response.data.answer)
+        const answer = await getQuestionAnswer(question)
+        console.log(answer.data)
+        setAnswer(answer.data)
     }
 
     const handleLucky = async() => {
         const response = await getLuckyAnswer()
-        setAnswer(response.data.answer)
-        setQuestion(response.data.question)
+        setAnswer(response.answer)
+        setQuestion(responses.question)
     }
     
     return (

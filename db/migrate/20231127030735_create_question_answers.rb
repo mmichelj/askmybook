@@ -5,7 +5,6 @@ class CreateQuestionAnswers < ActiveRecord::Migration[7.0]
 
       t.boolean :known, default: false
       t.string :answer, null: false
-      t.string :question, null: false
       t.vector :question_embedding, dimensions: 1536, using: :ivfflat, opclass: :vector_ip_ops
       t.integer :token_count, null: false
     end

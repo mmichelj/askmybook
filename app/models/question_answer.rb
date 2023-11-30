@@ -1,7 +1,9 @@
 class QuestionAnswer < ApplicationRecord
     before_validation :set_token_count, on: :create
-    validates :answer, presence: true
+    
+    validates :question, presence: true
     validates :question_embedding, presence: true
+    validates :answer, presence: true
     validates :token_count, presence: true
     
     scope :with_question_embedding, -> { where.not(question_embedding: nil) }
@@ -13,6 +15,6 @@ class QuestionAnswer < ApplicationRecord
     end
 
     def set_token_count
-        self.token_count = Tiktoken.encoding_for_model("gpt-4").encode(data).length
+        self.token_count = Tiktoken.encoding_for_model("gpt-4").encode(answer).length
     end
 end
