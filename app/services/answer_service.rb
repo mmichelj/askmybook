@@ -37,7 +37,7 @@ class AnswerService < ApplicationService
 
     def call_openai
         # Get relevant book sections
-        sections = Book.nearest_neighbors(:embedding, @question[:embeddings], distance: "euclidean").first(3)
+        sections = Book.nearest_neighbors(:embedding, @question[:embeddings], distance: "euclidean").first(2)
         contexts = sections.map { |section| section[:context] }
 
         # Call Open AI API
