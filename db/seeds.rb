@@ -7,12 +7,12 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 def load_book_embeddings()
-    sql = "\\copy books(context, embedding, token_count) FROM '#{Rails.root.join('public','pdf_embeddings.csv')}' with (format csv, header true)"
+    sql = "COPY books(context, embedding, token_count) FROM '#{Rails.root.join('public','pdf_embeddings.csv')}' with (format csv, header true)"
     ActiveRecord::Base.connection.execute(sql)
 end
 
 def load_question_answers_embeddings()
-    sql = "\\copy question_answers(question, question_embedding, token_count, known, answer) FROM '#{Rails.root.join('public','known_question_answers.csv')}' with (format csv, header true)"
+    sql = "COPY question_answers(question, question_embedding, token_count, known, answer) FROM '#{Rails.root.join('public','known_question_answers.csv')}' with (format csv, header true)"
     ActiveRecord::Base.connection.execute(sql)
 end
 
