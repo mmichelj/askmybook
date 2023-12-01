@@ -13,3 +13,9 @@ development:
 test:
   <<: *default
   database: askmybook_test
+
+production:
+  <<: *default
+  database: askmybook_production
+  username: askmybook
+  password: <%= ENV["ASKMYBOOK_DATABASE_PASSWORD"] %>
