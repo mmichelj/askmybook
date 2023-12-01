@@ -9,7 +9,7 @@ default: &default
 development:
   <<: *default
   database: askmybook_development
-  username: askmybook
+  username: 'book'
   password: <%= ENV["ASKMYBOOK_DATABASE_PASSWORD"] %>
 
 test:
