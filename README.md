@@ -1,12 +1,49 @@
 # Ask Sherlock Holmes
 
-An _[askmybook](https://github.com/slavingia/askmybook)_ clone built with Rails, React and [esbuild](https://esbuild.github.io/). 
+An _[askmybook](https://github.com/slavingia/askmybook)_ clone built with Rails and React. 
 
 Ask anything about the contents of _The Adventures of Sherlock Holmes_ by Sir Arthur Conan Doyle. Some sample quiz questions are available in the resources below:
 
 [The Adventures of Sherlock Holmes trivia questions](https://www.funtrivia.com/trivia-quiz/Literature/)
 
 [The Adventures of Sherlock Holmes Quiz](https://bookroo.com/book-quiz/the-adventures-of-sherlock-holmes)
+
+## Technical Design
+
+### PDF to CSV
+
+The pdf to csv script works as shown in the following diagram:
+
+![pdftocsv_diagram](pdftocsv.png)
+
+1. It validates the aguments sent via the command line. 
+2. If all arguments are ok, then it opens the provided pdf file. 
+3. If the pdf file was opened successfuly, then it extract its text.
+4. It separates the text into chunks by using a recursive character text splitter.
+5. Using OpenAI API embedding endpoint, it calculates the embeddings for each chunk.
+6. The chunks and embeddings are saved into a .csv file.
+
+### askmybook
+
+There are two actions that can happen in the application, 'ask' and 'lucky'. 
+
+#### Ask action
+
+The 'ask' action answers the user's question by looking for a similar context in the book chunks and sending it to OpenAI's GPT model 4. Subsequently, the generated answers are stored in a 'question_answer' table. This enables the system to retrieve and return stored responses when similar questions are received. The overall process of the 'ask' action is illustrated in the diagram below:
+
+![ask_diagram](askmybook.drawio.png)
+
+The application was designed based on a model-view-controller (MVC) architecture, with the incorporation of an additional service layer to house the business logic.
+
+The primary purpose of integrating a database is to minimize API call expenses and verify the existence of answers for semantically similar questions within the 'question_answer' table. As the application scales, there's potential for optimization by implementing a caching system, such as Redis, to enhance the efficiency of system responses.
+
+Furthermore, the database has a book table where, during the db:seed stage, the pdf_embeddings.csv file is imported into the db. This integration facilitates searches within the book's chunks, contributing to the overall performance of the system.
+
+#### Lucky action
+
+The 'lucky' action is simpler. It looks for a random 'known' question and answer which is returned to the view layer. As part of the db:seed stage, ten question-answer pairs with the attribute 'known' set to true are inserted into the database. When the user clicks the 'lucky' button, the system executes a query on the database, filtering for entries where 'known' is true, randomizes their order, and retrieves the first result.
+
+![lucky_diagram](lucky.drawio.png)
 
 ## Getting Started
 
@@ -168,10 +205,6 @@ Additonal information is available in the [heroku website](https://devcenter.her
 * node v16.14.0 
 * npm v8.3.1
 * yarn v1.22.21.
-
-## Technical Design
-
-
 
 ## Acknowledgments
 
