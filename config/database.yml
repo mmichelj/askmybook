@@ -1,16 +1,16 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  username: 'book'
-  password: <%= ENV['ASKMYBOOK_DATABASE_PASSWORD'] %>
+  username: <%= Rails.application.credentials.ASKMYBOOK_DATABASE_USER %>
+  password: <%= Rails.application.credentials.ASKMYBOOK_DATABASE_PASSWORD %>
   host: localhost
   port: 5436
 
 development:
   <<: *default
   database: askmybook_development
-  username: 'book'
-  password: <%= ENV["ASKMYBOOK_DATABASE_PASSWORD"] %>
+  username: <%= Rails.application.credentials.ASKMYBOOK_DATABASE_USER %>
+  password: <%= Rails.application.credentials.ASKMYBOOK_DATABASE_PASSWORD %>
 
 test:
   <<: *default
@@ -20,5 +20,5 @@ production:
   <<: *default
   database: askmybook_production
   port: 5432
-  username: u65p1uvlge8mv7
-  password: <%= ENV["ASKMYBOOK_DATABASE_PASSWORD"] %>
+  username: <%= Rails.application.credentials.ASKMYBOOK_PROD_DATABASE_USER %>
+  password: <%= Rails.application.credentials.ASKMYBOOK_PROD_DATABASE_PASSWORD %>
