@@ -12,6 +12,8 @@ const Answer = (props) => {
     }
 
     useEffect(() => {
+        if(!props.answer) return
+        
         if(prevAnswer != props.answer) {
             clearState()
         }

@@ -12,6 +12,17 @@ img {
 .bg-info {
   background-color: #005eff;
 }
+.btn-light {
+  background-color: #edeaec;
+}
+.btn-light:hover, .btn-light:active, .btn-light:focus {
+  background-color: #edeaec;
+}
+
+.btn-dark:hover {
+  background-color: black;
+}
+
 .primary-color {
   background-color: #FFFFFF;
 }
