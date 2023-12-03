@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { getQuestionAnswer, getLuckyAnswer } from "../services/BookDataService";
+import Answer from "./Answer";
 
 const QuestionAnswer = (props) => {
     const [answer, setAnswer] = useState("")
@@ -24,9 +25,7 @@ const QuestionAnswer = (props) => {
     return (
         <React.Fragment>
             <input value={question} type="text" className="form-control" placeholder="Write your question here..." aria-label="question" aria-describedby="basic-addon1" onChange={(event) => { handleQuestionOnChange(event) }}/>
-            {answer && <div className="jumbotron mt-4 p-4 rounded">
-                <div className="overflow-auto pe-2"><p className="text-black-wrap">{answer}</p></div>
-            </div>}
+            {answer && <Answer answer={answer} delay={50}/>}
             <div className="d-grid gap-3 d-md-flex mt-4">
                 <button className="btn btn-lg btn-primary me-md-2" type="button" onClick={handleAsk}>Ask Question</button>
                 <button className="btn btn-secondary btn-lg" type="button" onClick={handleLucky}>I'm feeling lucky!</button>
