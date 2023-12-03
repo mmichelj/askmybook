@@ -52,7 +52,7 @@ const QuestionAnswer = (props) => {
                 </div>
             }
             {answered &&
-                <div className="d-grid gap-3 d-md-flex mt-4">
+                <div className="d-grid gap-2 d-md-flex mt-4">
                     <button className="btn btn-dark me-md-1" type="button" onClick={hanldeAnother}>Ask another question</button>
                 </div>
             }
