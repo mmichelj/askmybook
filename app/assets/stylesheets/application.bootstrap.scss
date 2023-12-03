@@ -2,7 +2,7 @@
 
 img {
   display: block;
-  max-width: 200px;
+  max-width: 180px;
   height: auto;
 }
 
@@ -12,6 +12,17 @@ img {
 .bg-info {
   background-color: #005eff;
 }
+.btn-light {
+  background-color: #edeaec;
+}
+.btn-light:hover, .btn-light:active, .btn-light:focus {
+  background-color: #edeaec;
+}
+
+.btn-dark:hover {
+  background-color: black;
+}
+
 .primary-color {
   background-color: #FFFFFF;
 }
@@ -23,15 +34,16 @@ img {
   width: 100%;
   opacity: 0.4;
 }
-.jumbotron{
-  background-color: #E0E0E0; 
-}
 .overflow-auto {
   max-height: 70px;
-  max-width: 630px;
+  max-width: 684px;
 }
 .text-black-wrap {
-  text-align:justify;
+  text-align: justify;
   color: black;
+  word-wrap: break-word;
+}
+.text-muted {
+  max-width: 684px;
   word-wrap: break-word;
 }
