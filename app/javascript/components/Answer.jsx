@@ -13,8 +13,6 @@ const Answer = (props) => {
 
     useEffect(() => {
         if(prevAnswer != props.answer) {
-            console.log(prevAnswer)
-            console.log(props.answer)
             clearState()
         }
 
@@ -30,7 +28,6 @@ const Answer = (props) => {
     
     return (
         <div className="jumbotron mt-4 rounded">
-            {console.log(props.answer)}
             <div className="overflow-auto pe-2">
                 <p className="text-black-wrap"><strong>Answer: </strong>{text}</p>
             </div>
