@@ -23,6 +23,9 @@ const Answer = (props) => {
           }, props.delay);
 
           return () => clearTimeout(timeout);
+        } else if(index === props.answer.length) {
+            console.log("ANSWERED!!")
+            props.setAnswered(true)
         }
       }, [index, props.delay, props.answer]);
     
