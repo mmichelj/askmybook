@@ -1,6 +1,6 @@
 # Ask Sherlock Holmes
 
-An _[askmybook](https://github.com/slavingia/askmybook)_ clone built with Rails and React. 
+This is my own version of _[askmybook](https://github.com/slavingia/askmybook)_! Built with Rails and React. 
 
 Ask anything about the contents of _The Adventures of Sherlock Holmes_ by Sir Arthur Conan Doyle. Some sample quiz questions are available in the resources below:
 

@@ -43,7 +43,7 @@ const QuestionAnswer = (props) => {
     
     return (
         <React.Fragment>
-            <input value={question} type="text" className="form-control" placeholder="Write your question here..." aria-label="question" aria-describedby="basic-addon1" onChange={(event) => { handleQuestionOnChange(event) }}/>
+            <textarea value={question} type="text" className="form-control" placeholder="Write your question here..." aria-label="question" aria-describedby="basic-addon1" onChange={(event) => { handleQuestionOnChange(event) }}/>
             {asked && <Answer answer={answer} setAnswered={setAnswered} delay={50}/>}
             {(!answered && !asked || asked && !answer) &&
                 <div className="d-grid gap-2 d-md-flex mt-4">

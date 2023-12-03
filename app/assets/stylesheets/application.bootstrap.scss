@@ -2,7 +2,7 @@
 
 img {
   display: block;
-  max-width: 200px;
+  max-width: 180px;
   height: auto;
 }
 
@@ -41,5 +41,9 @@ img {
 .text-black-wrap {
   text-align: justify;
   color: black;
+  word-wrap: break-word;
+}
+.text-muted {
+  max-width: 684px;
   word-wrap: break-word;
 }
