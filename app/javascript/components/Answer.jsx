@@ -32,10 +32,8 @@ const Answer = (props) => {
       }, [index, props.delay, props.answer]);
     
     return (
-        <div className="jumbotron mt-4 rounded">
-            <div className="overflow-auto pe-2">
-                <p className="text-black-wrap"><strong>Answer: </strong>{text}</p>
-            </div>
+        <div className="overflow-auto pe-2 mt-4">
+            <p className="text-black-wrap"><strong>Answer: </strong>{text}</p>
         </div>
     )
 }
